@@ -3,25 +3,43 @@
 What you might have realized so far in our discussion of AO's architecutre is
 that there has been no mention of "blocks", or adding blocks to a "blockchain".
 
-This is where AO *is* different to many blockchains out there. 
+Looking at the previous chapter, there are still some unanswered questions:
 
-As mentioned in the previous chapter in the section on Compute Units (CUs), each
-and every process and message is stored in chronological order on Arweave.
+- Do AO nodes run all three of these "units"?
+- How do Scheduler Units order trnasactions? 
+- How do you know a Compute Unit will return you a correct result?
+- Where is consensus?!?!?!?!?!?
 
-This means AO nodes themselves do not store state - they are instead focused largely on execution and message passing. 
+In this chapter, based on the explanation of MUs, SUs, and CUs as well as other 
+AO primitives, we will take a look at answering some of these questions and
+looking at the security and consensus model of AO in more detail. 
 
-There is no need for consensus once the state has been settled on Arweave, as
-Arweave acts as the state layer. 
+Let's first take a look at consensus at the state level and build up from there.
 
-If a set of transactions related to a process are stored immutably, anyone can
-read this from Arweave, and re-construct this set of ordered messages to get the
-state themselves.
+## The state layer
+
+As mentioned in the previous chapter, SUs order and store messages on Arweave,
+and CUs perform computation based on this message log on Arweave.
+
+This means at the state layer, consensus is solved. Once a set of messages are
+on Arweave they are immutable and tamper-proof: in other words, anyone can read
+from this log of messages stored on Arweave and re-construct the state of an AO
+process.
+
+AO essentially inherits the security of Arweave for the storing and reading of
+message data. 
 
 Arweave is the source of truth for settled transactions, so where some kind of
 consensus is needed is instead *before* this, when messages are being propogated
 through the network to be scheduled in a specific order.
 
-## Consensus 
+
+This leaves two parts about consensus to be answered:
+1. How do you ensure that Scheduler Units order transactions in a fair, and
+   tamper-proof way?
+2. How do you ensure that Compute Units return truthful results to a user?
+
+## Consensus and trust from SUs
 
 As mentioned in the previous chapter, Scheduler Units (SUs) are responsible for
 deciding the order of messages, and settling them on Arweave. 
@@ -29,7 +47,7 @@ deciding the order of messages, and settling them on Arweave.
 This means that *this* is the part of AO which requires consensus; in other
 words determining the order to store messages related to a process.
 
-## Computational Correctness
+## Ensuring computational correctness from CUs
 
 Along with consensus on SUs, Compute Units (CUs) don't have a strict consensus
 mechanism, but use economic incentives and staking in order to return correct
