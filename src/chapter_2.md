@@ -1,26 +1,26 @@
 # AO Nodes
 
-An AO node is a computer, somewhere, running softwarw which adheres to the AO
-Spec. The client implementation is called [HyperBEAM](https://hyperbeam.arweave.net).
+An AO node is a computer running among a group of interconnected computers, running
+AO's node software. The client implementation of this is called [HyperBEAM](https://hyperbeam.arweave.net).
 
 This piece of software is much like the software that Ethereum node operators run. It is
-what connects different nodes to each other, handles transactions, and more. 
+what connects different nodes to each other, handles transactions, and more.
 
 For now, let's focus on the primary purpose of these nodes - performing
-computation. 
+computation.
 
-Users want to be able to do things. They want to transfer tokens from one account to another, they want to swap tokens on decentralized exchanges, and interact with different types of smart contracts. 
+Users want to be able to do things. They want to transfer tokens from one account to another, they want to swap tokens on decentralized exchanges, and interact with different types of smart contracts.
 
 Like many blockchains, these are some of the things that AO can facilitate. AO
 does this through two different primary mechanisms: processes and messages.
 
 ## Processes
 
-On AO, smart contracts are colloquially referred to as **processes**. 
+On AO, smart contracts are colloquially referred to as **processes**.
 
 Processes on AO are written in a programming language called Lua. Developers
 write **handlers** which as you might expect "handle" different types of
-transactions. 
+transactions.
 
 For example, a decentralized exchange built on AO might have a process with the handlers "swap", "deposit", and "withdraw".
 

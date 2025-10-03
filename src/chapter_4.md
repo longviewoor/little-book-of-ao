@@ -49,8 +49,23 @@ words determining the order to store messages related to a process.
 
 ## Ensuring computational correctness from CUs
 
-Along with consensus on SUs, Compute Units (CUs) don't have a strict consensus
-mechanism, but use economic incentives and staking in order to return correct
-computational results for users.
+CUs on AO do not have a srict consensus mechanism. Instead, they make use of
+economic incentives and staking in order to oncentivize the returning of correct 
+computational results to users.
 
-CUs
+At the time of writing, [Forward Research]() is subsidizing and providing the
+use of CUs. Messages sent by users, passing through MUs and other parts of the
+AO Network, currently have their result and state computed by at least three
+CUs.
+
+Eventually as the AO network develops, node operators will provision their own
+CUs, and users will be able to decide how many times they would like to receive
+a result from a CU. 
+
+How does a CU "know" if it got something wrong? Where's the consensus here? Like
+if you get the result from 5 CUs and 4 agree, one doesn't - how is slashing etc.
+determined here?
+
+The fact that state is implied and re-constructable from Arweave also means that
+CUs cannot physically tamper with the actual state of a process - they can only
+return inaccurate information. CUs cannot affect the real state of a process.

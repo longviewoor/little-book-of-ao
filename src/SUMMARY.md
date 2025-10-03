@@ -1,8 +1,8 @@
 # Summary
 
-# Introduction 
+# Introduction
 
-- [Preface](./chapter_0.md)
+- [Who this book is for](./chapter_0.md)
 - [What is AO?](./chapter_1.md)
 
 # How does AO Work?
