@@ -1,8 +1,10 @@
 # Summary
 
-# Introduction
+[Introduction](./introduction.md)
 
-- [Who this book is for](./chapter_0.md)
+# The Prelude
+
+- [What is Arweave?](./arweave.md)
 - [What is AO?](./chapter_1.md)
 
 # How does AO Work?
