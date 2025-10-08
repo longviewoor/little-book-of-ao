@@ -1,48 +1,44 @@
 # What is AO?
 
-AO is a **decentralized compute network**. What this really means is that AO
-is a series of connected computers which perform computations on behalf of users.
+AO is a **decentralized compute network** built on top of Arweave.
 
-AO is built on top of Arweave, a blockchain dedicated to long-term, immutable storage.
+What this really means is that AO is a network of connected computers which perform computations on behalf of users. This is similar to many blockchains out there which run smart contracts, and process smart contract interactions for users.
 
-AO itself is almost like a program being ran on Arweave.
+In terms of AO, a simple way you can think of it is like this: 
 
-As we get further into this book, you will see how by building on Arweave as a base, it
-has unlocked many different properties.
+- Arweave *stores* all of the smart contract code, and interactions
+- AO *executes* all of the actions users take
+
+Where traditional blockchains have a single node (and network) perform both
+storage and computation, the separation of Arweave and AO separates these
+duties.
 
 ## Is AO a blockchain?
 
-Calling AO a blockchain *may* be techincally correct due to some of its inherent
-properties, but it is also very different to existing blockchains.
-
 The best way to think of it is that AO is very much *like* a blockchain. In
-fact, as you'll see as we get further into this book, there are actions on AO
-which do eventually get settled onchain.
+fact, almost all operations are logged onchain, on Arweave. 
 
-We will make a lot of comparisons to blockchain networks in this book, and raw
-analogies between them and AO in order to make it easier to understand.
+However, some of AO's properties make it very different to existing blockchains. 
 
-## Similarities between AO and existing blockchains
+Try to go into this book with an open mind, and don't get caught up too much on
+whether something fits this definition exactly. 
 
-Here are some properties that make AO similar to existing machines:
-- There are a connected group of nodes which communicate with each
-  other and perform computation
-- Computation and state evalutation is paid for in cryptocurrency ($AO)
-- There is a consensus mechanism
-- There is cryptographic paths which make up blockchain-like structures
+Here are some of the properties which make AO similar to existing machines:
+- There are a connected group of nodes which communicate with eachother
+- Computation is paid for in cryptocurrency ($AO)
+- There is some kind of consensus
+- There are cryptographic signatures and attestations for user actions
 
 
-## How this book works
+## The following chapters
 
-This book will tackle the understanding of AO in a few following ways.
-
-It will first establish the very core concepts which make up an AO node, and the
+The next section of the book will establish the very core concepts which make up an AO node, and the
 type of things that they can do. This will introduce concepts like **processes**
 and **messages**, which are similar to existing blockchain concepts.
 
 We will then take a look at the **structure** of nodes in more detail, and look
 at how these nodes communicate with each other. This is where AO starts to
-deviate from traditional blockchain concepts.
+deviate from traditional blockchains.
 
 Lastly, we will look at **consensus**, **state**, and **scaling**.
 
