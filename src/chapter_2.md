@@ -33,5 +33,7 @@ to handle a swap. If it is deposit, it will run the code in the process for depo
 
 Transactions that users send to processes are referred to as **messages** on AO. Processes can also create and send messages to one another, much like how smart contracts can call other smart contracts.
 
-Messages function identically to transactions, and in reality are signed transactions which get settled onchain (which we'll look more into later).
-
+Messages function identically to transactions, and in reality are signed
+transactions which get settled onchain (which we'll look more into later).
+Wehere you might think of blockchains as a chain of blocks, processes in AO have
+their own "chain of messages" associated with them. 

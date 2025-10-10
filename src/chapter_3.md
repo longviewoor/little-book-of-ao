@@ -1,74 +1,56 @@
-# Communication between nodes 
+# Transaction Lifecycle 
 
-Similarly to most blockchains, users create and sign a transaction, and send it
-to a single node which propagates the transaction throughout the network.
+On AO, users have a wallet with which they create and sign transactions, also
+known as **messages** on AO. 
 
-AO nodes run three distinct pieces of software which handle this process. One
-part in particular, the Scheduler Units (SUs), are important for consensus.
+Let's take a look at a high-level overview of what happens when a message is
+sent on AO, and how a user gets a response from the network. 
 
-In this chapter, we'll look at the different "units" which make up different
-types of AO nodes, and slowly build up the connection between them.
+## Message validation
 
-## The Messenger Unit (MU)
+When a user interacts with a dApp on AO, for example a decentralized exchange
+process, a message is created and sent to an initial node.
 
-The Messenger Unit (MU) is essentially the entry point and exit point of every
-message sent by a user on AO. When users create a message to interact with a process, 
-it is sent to the MU of an initial AO node to be propagated throughout the network. 
+This initial node receives the new message, checks to see if the transaction is
+valid (for example it has a valid signature, has the correct structure, etc.).
 
-When an AO node receives a new message, the MU checks to see if a transaction is valid
-(for example it has a valid signature, and has the correct transaction structure, etc.).
+If the message is valid, it forwards this message onwards to be scheduled.
 
-If valid, the message is broadcasted to other AO nodes. This part is much like
-blockchains you might be familiar with - you post a transaction to the network
-which is received by an initial node, which then shares it to other nodes.
+## Message scheduling and storage
 
-On AO, valid messages are propogated throughout the network and forwarded onto
-**Scheduler Units** (SUs). 
+Once a message is deemed as valid, this means it can be scheduled for settlement
+and storage on Arweave.
 
+A scheduler handles all of incoming messages associated with certain processes,
+orders them, and then stores these messages on Arweave. 
 
-## The Scheduler Unit (SU)
+This is a crucial part of the process, as it sets in stone the transaction ordering.
 
+Each message is stored on Arweave in an immutable, timestamped order - just like
+with other blockchains. 
 
-SUs are special kinds of nodes which have one major job in the AO network:
-sequencing and ordering messages for processes.
+## Computation
 
-Let's take, for example, a standard process for a decentralized exchange. 
-If 10 different users send messages to make swaps, these need to be put in some
-kind of order for the process to handle. This is the job of Scheduler Units. 
+Once a user's message is stored on Arweave, the new state of a process can be
+computed.
 
-When a process is deployed on AO, it is assigned a Scheduler Unit (SU). The SU
-will order any messages related to a given set of processes for processing. 
+Think of it like this:
 
-This is a very important part of a message's lifecycle, as it is also the part 
-where data gets stored **onchain**. 
+- An AO node sends off a message to be stored on Arweave
+- Schedulers handle the message settlement, and once done, let the AO node know
+- The AO node can now *read* all the transactions on Arweave, and re-construct
+  the state
+- A number of AO nodes can compute this state for further verification 
 
-As mentioned in the last chapter, messages are signed Arweavetransactions, in the
-format of [ANS-104 DataItems](https://cookbook.arweave.net/tooling/specs/ans/ANS-104.html). 
+And this is exactly what happens with AO. An AO node reads all of the state
+associated with a process from Arweave, computes it, and returns the result to
+the user.
 
-What this means in practice is that AO messages are transactions which an SU puts in order,
-then stores onchain, on Arweave. 
+This is ultimately how the message lifecycle works on AO.
 
-This is a crucial part of the process as it sets in stone the transaction ordering.
-Each message stored on Arweave is in an immutable, timestamped order.
+## But, where consensus?
 
-## The Compute Unit (CU)
+This approach to computation is radically different to other solutions, which
+also means that consensus must also be approached differently.
 
-Once a SU has sent a message to Arweave to be settled, it is relayed back to a
-Compute Unit (CU).
-
-The CU is an AO node which handles the actual computation of state to relay data 
-back to the user. Here's where AO gets very interesting.
-
-For the CU to work out the current state of a process, all it has to do is read
-in the process (stored on Arweave), along with all of its associated messages in 
-order. By doing this, it can determine the current state to return to the user.
-
-Note the interesting property here: state is simply implied on Arweave, and
-computed on demand. Users could even spin up their own CU to verify the state
-themselves.
-
-This means that nodes on AO don't technically store any kind of long-term state - they
-just read it from Arweave on demand, which *is* storing it. 
-
-This concept is referred to as **holographic state** on AO.
-
+Let's take a look at consensus in a little bit more detail.

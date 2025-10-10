@@ -12,9 +12,9 @@
 - [Nodes, Processes, and Messages](./chapter_2.md)
 - [Mailboxes and CRON Jobs](./inbox_outbox_cron.md)
 
-# Structure of AO Nodes
+# Node Architecture and Communication
 
-- [Node Architecture and Communication](./chapter_3.md)
+- [Transaction Lifecycle](./chapter_3.md)
 
 # Consensus and Scaling
 - [Consensus and State](./chapter_4.md)
